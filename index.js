@@ -21,6 +21,7 @@ const defaulConfig = {
     insertContent: 'import "./assets/css/common.less"',
     // insertPosition: '// insert-common-less'
   }, // 默认插入 字符串类型的entry文件里
+  logOutPut: 'logs'
 }
 
 // const ENTRY = 'src/main.js';
@@ -99,7 +100,7 @@ function start(){
     const {lists, logs} = unflatten(cssHandled.flatened);
     const changedFileLists = Object.keys(logs);
         /**======== 记录日志 start ===============**/
-          log(logs, changedFileLists);
+          log(logs, changedFileLists, defaulConfig.logOutPut);
         /**======== 记录日志 end =================**/
     // gf.writeJson(path.join(process.cwd(), './optimise_style/temp/temp_unflatten.json'),lists, ()=>{
     //   console.log('666')
@@ -121,4 +122,4 @@ function start(){
   })
 }
 
-export default start;
+module.exports = start;

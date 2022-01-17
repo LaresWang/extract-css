@@ -2,6 +2,7 @@ const gf = require('./generateFile')
 const utils = require('./utils');
 const con = require('./const');
 const path = require('path')
+const fse = require('fs-extra')
 
 const {SUFFIX_DEEP, SUFFIX_COMMON, LEVEL_FLAG, SUFFIX_SAME_FILE_COMMON} = con;
 const msgMap = {
@@ -10,7 +11,8 @@ const msgMap = {
   [SUFFIX_SAME_FILE_COMMON]: '当前文件相同样式提升',
 }
 
-const log = function(data={}, fileLists){
+const log = function(data={}, fileLists, outPut){
+  const logDir = path.join(process.cwd(), outPut);
   return Promise.resolve().then(()=>{
     if(utils.isEmptyObject(data)){
       return;
@@ -27,7 +29,8 @@ const log = function(data={}, fileLists){
       str+=`\n^^^^^^^^^^^^^^^^ ${name.replace(process.cwd(), '')} end ^^^^^^^^^^^^^^^^\n\n`;
     }
     const d = new Date();
-    gf.append(path.join(process.cwd(), `./optimise_style/logs/log${d.toLocaleDateString().replace(/\//g,'-')}T${d.toLocaleTimeString('en-US', { hour12: false })}.txt`),str, ()=>{
+    fse.ensureDirSync(logDir)
+    gf.append(path.join(logDir, `log${d.toLocaleDateString().replace(/\//g,'-')}T${d.toLocaleTimeString('en-US', { hour12: false })}.txt`),str, ()=>{
       console.log('日志记录完成')
     })
   })
