@@ -4,7 +4,7 @@
   "description": "extract the same css from different files and put into a common file",
   "main": "core/index.js",
   "scripts": {
-    "test": "extract-css s",
+    "test": "node core/test.js",
     "dev": "webpack --mode=development",
     "prod": "webpack --mode=production"
   },
@@ -36,7 +36,7 @@
     "type": "git",
     "url": "https://github.com/LaresWang/extract-css.git"
   },
-  "files":[
+  "files": [
     "package.json",
     "README.md",
     "LICENSE",
