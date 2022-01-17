@@ -2,7 +2,7 @@
   "name": "extract-common-css",
   "version": "1.0.0",
   "description": "extract the same css from different files and put into a common file",
-  "private": true,
+  "main": "index.js",
   "scripts": {
     "dev": "webpack --mode=development",
     "test": "webpack --mode=development",
