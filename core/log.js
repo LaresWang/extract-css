@@ -12,11 +12,12 @@ const msgMap = {
 }
 
 const log = function(data={}, fileLists, outPut){
+  if(utils.isEmptyObject(data)){
+    return;
+  }
   const logDir = path.join(process.cwd(), outPut);
+  fse.ensureDirSync(logDir)
   return Promise.resolve().then(()=>{
-    if(utils.isEmptyObject(data)){
-      return;
-    }
     let str = '';
     const files = fileLists.map(name=>name.replace(process.cwd(), ''));
     str+= `/**** 以下${files.length}个文件存在样式变动 ******/\n [\n\t${files.join('\n\t')}\n]\n\n /**** 以下为变动详情 *****/\n`;
@@ -29,8 +30,7 @@ const log = function(data={}, fileLists, outPut){
       str+=`\n^^^^^^^^^^^^^^^^ ${name.replace(process.cwd(), '')} end ^^^^^^^^^^^^^^^^\n\n`;
     }
     const d = new Date();
-    fse.ensureDirSync(logDir)
-    gf.append(path.join(logDir, `log${d.toLocaleDateString().replace(/\//g,'-')}T${d.toLocaleTimeString('en-US', { hour12: false })}.txt`),str, ()=>{
+    gf.append(path.join(logDir, `log${d.toLocaleDateString().replace(/\//g,'-')}T${d.toLocaleTimeString('en-US', { hour12: false }).replace(/(\d\d):(\d\d):(\d\d)/, '$1h$2m$3s')}.txt`),str, ()=>{
       console.log('日志记录完成')
     })
   })
