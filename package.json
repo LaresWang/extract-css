@@ -1,6 +1,6 @@
 {
   "name": "extract-common-css",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "extract the same css from different files and put into a common file",
   "main": "index.js",
   "scripts": {
@@ -35,5 +35,12 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/LaresWang/extract-css.git"
-  }
+  },
+  "files":[
+    "package.json",
+    "README.md",
+    "LICENSE",
+    "dist",
+    "bin"
+  ]
 }
