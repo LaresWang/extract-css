@@ -12,7 +12,7 @@ const log = require('./log')
 const defaulConfig = {
   entry: 'src/main.js', // 入口文件  String|Array
   // entry: 'src/sytles/reset.less',
-  // entry: 'optimise_style/test/Set.vue',
+  // entry: 'test/Set.vue',
   exclude: [], // 排除某个文件或文件夹, 默认会把非 vue/css/less 文件过滤掉，
   include: ['src/routes/router.js','src/routes/chat.js'], // 这里可指定保留一些文件,注意保留子文件就必须保留父文件
   destPath: 'src/assets/css/common.less', // 生成的css 文件路径
@@ -55,21 +55,21 @@ function start(){
     if(currentCommonIndex>-1){
       console.log('已存在抽离过的公共样式文件');
       styles.splice(currentCommonIndex,1);
-      gf.writeJson(path.join(process.cwd(), './optimise_style/temp/temp_currentCommon.json'),currentCommonInfos, ()=>{
+      gf.writeJson(path.join(process.cwd(), './temp/temp_currentCommon.json'),currentCommonInfos, ()=>{
         console.log('000')
       })
     }
     // console.log(JSON.stringify(styles))
-    gf.writeJson(path.join(process.cwd(), './optimise_style/temp/temp.json'),styles, ()=>{
+    gf.writeJson(path.join(process.cwd(), './temp/temp.json'),styles, ()=>{
       console.log('111')
     })
 
-    gf.write(path.join(process.cwd(), './optimise_style/temp/temp.txt'),JSON.stringify(styles), ()=>{
+    gf.write(path.join(process.cwd(), './temp/temp.txt'),JSON.stringify(styles), ()=>{
       console.log('111')
     })
     const cssHandled = extract(styles, currentCommonInfos);
     // console.log(cssHandled)
-    gf.writeJson(path.join(process.cwd(), './optimise_style/temp/temp_flatten.json'),cssHandled.flatened, ()=>{
+    gf.writeJson(path.join(process.cwd(), './temp/temp_flatten.json'),cssHandled.flatened, ()=>{
       console.log('222')
     })
 
@@ -78,18 +78,18 @@ function start(){
 
     /**======== 处理公共的样式 start==============**/
     
-    gf.writeJson(path.join(process.cwd(), './optimise_style/temp/temp_common.json'),cssHandled.common, ()=>{
+    gf.writeJson(path.join(process.cwd(), './temp/temp_common.json'),cssHandled.common, ()=>{
       console.log('333')
     })
     
     const commonCss = obj2css(cssHandled.common);
-    gf.writeJson(path.join(process.cwd(), './optimise_style/temp/temp_common_css.json'),commonCss, ()=>{
+    gf.writeJson(path.join(process.cwd(), './temp/temp_common_css.json'),commonCss, ()=>{
       console.log('444')
     })
 
     const lessStr = genLess.genCommon(commonCss);
     insert(lessStr, defaulConfig, 'common');
-    gf.write(path.join(process.cwd(), './optimise_style/temp/temp_common_css.less'),lessStr, ()=>{
+    gf.write(path.join(process.cwd(), './temp/temp_common_css.less'),lessStr, ()=>{
       console.log('555')
     })
     /**======== 处理公共的样式 end==============**/
@@ -102,7 +102,7 @@ function start(){
         /**======== 记录日志 start ===============**/
           log(logs, changedFileLists, defaulConfig.logOutPut);
         /**======== 记录日志 end =================**/
-    gf.writeJson(path.join(process.cwd(), './optimise_style/temp/temp_unflatten.json'),lists, ()=>{
+    gf.writeJson(path.join(process.cwd(), './temp/temp_unflatten.json'),lists, ()=>{
       console.log('666')
     })
 
@@ -110,7 +110,7 @@ function start(){
     const flists = genLess.genEach(lists);
 
     insert(flists, null, 'each', changedFileLists);
-    gf.writeJson(path.join(process.cwd(), './optimise_style/temp/temp_lessfiles.json'),flists, ()=>{
+    gf.writeJson(path.join(process.cwd(), './temp/temp_lessfiles.json'),flists, ()=>{
       console.log('777')
     })
     // console.log(flists)
