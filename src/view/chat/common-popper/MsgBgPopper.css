@@ -1,0 +1,117 @@
+/*
+
+>= 31级别
+
+*/
+.pop-master-l {
+  color: #e9bb76 !important;
+  background: radial-gradient(#372a2a, #433b2c);
+  border: 1px solid #a49f88;
+  border-radius: 0px 10px 10px 10px;
+  transform: translateY(8px);
+}
+.pop-master-l::after {
+  content: '';
+  display: block;
+  position: absolute;
+  width: 30px;
+  height: 15px;
+  background-repeat: no-repeat;
+  background-size: 30px 15px;
+  background-image: url(../../../assets/images/vipCrown.png);
+  top: 0;
+  right: 5px;
+  transform: translate(0, -50%);
+}
+.pop-master-r {
+  color: #e9bb76 !important;
+  background: radial-gradient(#372a2a, #433b2c);
+  border: 1px solid #a49f88;
+  border-radius: 10px 0 10px 10px;
+  transform: translateY(8px);
+}
+.pop-master-r::after {
+  content: '';
+  display: block;
+  position: absolute;
+  width: 30px;
+  height: 15px;
+  background-repeat: no-repeat;
+  background-size: 30px 15px;
+  background-image: url(../../../assets/images/vipCrown.png);
+  top: 0;
+  left: 5px;
+  transform: translate(0, -50%);
+}
+/*
+
+VIP
+
+*/
+.pop-vip-l {
+  color: #f3e0b1 !important;
+  background: radial-gradient(#353535, #16140e);
+  border-radius: 0px 10px 10px 10px;
+  transform: translateY(8px);
+}
+.pop-vip-l::after {
+  content: '';
+  display: block;
+  position: absolute;
+  width: 30px;
+  height: 15px;
+  background-repeat: no-repeat;
+  background-size: 30px 15px;
+  background-image: url(../../../assets/images/vipCrown.png);
+  top: 0;
+  right: 5px;
+  transform: translate(0, -50%);
+}
+.pop-vip-r {
+  color: #f3e0b1 !important;
+  background: radial-gradient(#353535, #16140e);
+  border-radius: 10px 0 10px 10px;
+  transform: translateY(8px);
+}
+.pop-vip-r::after {
+  content: '';
+  display: block;
+  position: absolute;
+  width: 30px;
+  height: 15px;
+  background-repeat: no-repeat;
+  background-size: 30px 15px;
+  background-image: url(../../../assets/images/vipCrown.png);
+  top: 0;
+  left: 5px;
+  transform: translate(0, -50%);
+}
+
+/**
+
+default userRank < 31级别 非VIP
+
+**/
+.pop-default-l {
+  background: #ffffff;
+  border-radius: 0px 10px 10px 10px;
+  transform: translateY(8px);
+}
+.pop-default-r {
+  background: #cfe1ff;
+  border-radius: 10px 0 10px 10px;
+  transform: translateY(8px);
+}
+.pop-default-r-d {
+  background: #ffffff;
+  border-radius: 10px 0 10px 10px;
+  transform: translateY(8px);
+}
+.pop-default-r-m {
+  border-radius: 10px 0 10px 10px;
+  transform: translateY(8px);
+}
+.pop-default-l-m {
+  border-radius: 0 10px 10px 10px;
+  transform: translateY(8px);
+}

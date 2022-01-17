@@ -4,8 +4,8 @@
   "description": "extract the same css from different files and put into a common file",
   "main": "core/index.js",
   "scripts": {
+    "test": "extract-css s",
     "dev": "webpack --mode=development",
-    "test": "webpack --mode=development",
     "prod": "webpack --mode=production"
   },
   "keywords": [

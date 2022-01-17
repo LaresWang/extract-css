@@ -1,0 +1,495 @@
+
+/*
+YUI 3.18.1 (build f7e7bcb)
+Copyright 2014 Yahoo! Inc. All rights reserved.
+Licensed under the BSD License.
+http://yuilibrary.com/license/
+*/
+html {
+  color: #000;
+  background: #fff;
+  font-size: 14px;
+  // font-family: 'Source Han Sans';
+}
+
+body,
+div,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+pre,
+code,
+form,
+fieldset,
+legend,
+input,
+textarea,
+p,
+blockquote,
+th,
+td {
+  margin: 0;
+  padding: 0;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+fieldset,
+img {
+  border: 0;
+}
+
+address,
+caption,
+cite,
+code,
+dfn,
+// em,
+// strong,
+th,
+var {
+  font-style: normal;
+  font-weight: normal;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+caption,
+th {
+  text-align: left;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: 100%;
+  font-weight: normal;
+}
+
+q:before,
+q:after {
+  content: '';
+}
+
+abbr,
+acronym {
+  border: 0;
+  font-variant: normal;
+}
+
+sup {
+  vertical-align: text-top;
+}
+
+sub {
+  vertical-align: text-bottom;
+}
+
+input,
+textarea,
+select {
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  *font-size: 100%;
+}
+
+legend {
+  color: #000;
+}
+
+#yui3-css-stamp.cssreset {
+  display: none;
+}
+#talkbubblee {
+  // line-height: 22px !important;
+  word-break: break-word;
+  white-space: pre-wrap;
+  width: fit-content !important;
+  box-sizing: border-box;
+}
+#talkbubble {
+  // line-height: 22px !important;
+  word-break: break-word;
+  white-space: pre-wrap;
+  width: fit-content !important;
+  box-sizing: border-box;
+}
+.others-msg,
+.other-msg {
+  .quoteBubble {
+    // margin-left: 20px !important;
+    float: left !important;
+  }
+}
+.quoteBubble {
+  margin-right: 10px;
+  margin-left: 10px;
+  float: right;
+  word-break: break-word;
+  white-space: pre-wrap;
+  width: fit-content;
+  span,
+  label {
+    vertical-align: top;
+  }
+  img {
+    max-width: 50px;
+  }
+}
+#talk,
+.member-icon img,
+.infotime {
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  -khtml-user-select: none;
+  user-select: none;
+  -webkit-user-select: none;
+}
+// 禁止跨消息复制 @mousedown
+// #text {
+//   -webkit-user-select: text;
+//   user-select: text;
+// }
+#talk .member-icon {
+  pointer-events: none;
+}
+
+.mess-head {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.vlogo {
+  padding-right: 5px;
+}
+.audio-wrap {
+  cursor: pointer;
+  img {
+    height: 20px;
+  }
+  img,
+  span {
+    vertical-align: middle;
+  }
+}
+.user-sign {
+  width: 175px;
+  #text {
+    img {
+      width: 16px;
+    }
+  }
+  p {
+    max-width: 50px;
+    display: inline;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    -webkit-box-flex: 1;
+  }
+  .notify {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    -webkit-box-flex: 1;
+  }
+}
+.serach-input {
+  .el-input__inner {
+    background: #fff;
+    height: 25px;
+    line-height: 26px;
+    border-radius: 13px;
+  }
+  .el-input__prefix,
+  .el-input__suffix {
+    top: 0px;
+  }
+}
+#talkbubble {
+  width: auto;
+  //   border-radius: 5px !important;
+  .fileBox {
+    line-height: 20px;
+  }
+
+  .imgMsg {
+    cursor: pointer;
+    line-height: 10px;
+    border: 1px solid #E4E4E4;
+    border-radius: 0 6px 6px 6px;
+    img {
+      max-width: 120px;
+      //    max-height: 120px;
+      border-radius: 0 6px 6px 6px;
+    }
+  }
+}
+#talkbubblee {
+  width: auto;
+  // border-radius: 5px !important;
+  .fileBox {
+    line-height: 20px;
+  }
+  .imgMsg {
+    cursor: pointer;
+    line-height: 10px;
+    border: 1px solid #E4E4E4;
+    border-radius: 6px 0 6px 6px;
+
+    img {
+      max-width: 120px;
+      //    max-height: 120px;
+      border-radius: 6px 0 6px 6px;
+    }
+  }
+}
+
+.noDrag {
+  -webkit-app-region: no-drag;
+}
+.drag {
+  -webkit-app-region: drag;
+}
+.message .mess-header span:nth-child(2) {
+  margin: 0 !important;
+}
+.secretKeyArea {
+  textarea {
+    border: #e5e5e5 solid 1px;
+    box-shadow: none;
+  }
+}
+.load-border span {
+  cursor: pointer;
+}
+
+.el-checkbox__inner {
+  border-radius: 20px;
+}
+.hidden {
+  display: none !important;
+  height: 0;
+  .el-checkbox__inner {
+    display: none;
+  }
+}
+.visibilityHid {
+  visibility: hidden !important;
+  height: 0;
+  .el-checkbox__inner {
+    display: none;
+  }
+}
+
+.videoMsg {
+  line-height: 10px;
+  cursor: pointer;
+}
+.mess-detail-self .mess-words {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap-reverse;
+}
+.quitip {
+  width: 90%;
+}
+.quitips {
+  width: 200px;
+}
+.quoteEmoji {
+  width: 15px !important;
+}
+.imgBubble {
+  padding: 3px !important;
+}
+
+.pop-video {
+  padding: 0px !important;
+}
+
+.red {
+  color: red;
+}
+.blue {
+  color: #5882f4 !important;
+}
+.pointer {
+  cursor: pointer;
+}
+.mess-header {
+  background: #f6f6f6 !important;
+}
+.groupavatar .user-uploader-icon {
+  // font-size: 30px;
+  font-size: 44px;
+  color: #ddd;
+}
+.demo-block {
+  .el-button--primary,
+  .el-button--default {
+    height: 40px !important;
+  }
+  .head-image {
+    // width: 30px;
+    // height: 30px;
+    width: 44px;height: 44px;
+  }
+}
+.cropper-dialog .el-dialog__body {
+  height: 280px !important;
+}
+.contact-new-friends .el-loading-mask {
+  position: fixed;
+  left: 331px;
+  top: 50px;
+}
+
+
+.levelAll {
+  background-size: contain;
+  display: inline-block;
+}
+.maskVisible {
+  top: 5px;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  z-index: 1000;
+  position: absolute;
+  width: 98%;
+  background: #fff;
+  opacity: 0.8;
+  border: #ddd dashed 1px;
+  height: calc(100vh - 78px);
+  left: 1%;
+}
+.level-icon {
+  .goldenBg {
+    padding: 0 3px !important;
+  }
+  .levelbox {
+    padding: 0;
+  }
+}
+.group-member-name-class {
+  justify-content: flex-end;
+  height: 18px;
+}
+.others-msg {
+  .group-member-name-class {
+    justify-content: flex-start !important;
+  }
+}
+.other-msg {
+  .group-member-name-class {
+    justify-content: flex-start !important;
+  }
+}
+.mess-talk-self {
+  margin-bottom: 20px;
+}
+.reEdit {
+  color: #5882f4;
+  padding-left: 10px;
+  cursor: pointer;
+}
+.chatInfo{
+  text-align: center;
+  img.avater{
+    border-radius: 30px;
+    width: 60px;
+    height: 60px;
+  }
+  p{
+    margin:8px 0;
+    font-size: 16px;
+    color: #333;
+  }
+  span{
+    color: rgba(0, 0, 0, 0.3);
+    font-size:12px;
+  }
+  margin:10px 0 20px;
+}
+.invitebtn {
+  background: rgba(47, 84, 235, 0.1);
+  width: 100px;
+  height: 36px;
+  line-height: 36px;
+  text-align: center;
+  margin: 10px auto;
+  border-radius: 5px;
+  color: #506FF5;
+  cursor: pointer;
+  font-size: 13px;
+}
+.ql-editor.ql-blank::before{
+  font-style: normal !important;
+  color: rgba(0, 0, 0, 0.3) !important;
+}
+
+.el-drawer.rtl {
+  animation: rtl-drawer-out 0s
+}
+
+.el-drawer__open .el-drawer.rtl {
+  animation: rtl-drawer-in 0s 1ms
+}
+
+.img_12{
+  width: 12px;height: 12px;
+}
+.img_13{
+  width: 13px;height: 13px;
+}
+.img_14{
+  width: 14px;height: 14px;
+}
+.img_15{
+  width: 15px;height: 15px;
+}
+.img_16{
+  width: 16px;height: 16px;
+}
+.img_17{
+  width: 17px;height: 17px;
+}
+.img_18{
+  width: 18px;height: 18px;
+}
+.img_42{
+  width: 42px;height: 42px;
+}
+.img_search{
+  margin-top: 30px;
+  width:80px;height:80px;
+}
+.select_box{
+  /deep/ .el-input--mini .el-input__icon{
+    line-height: inherit;
+  }
+}
