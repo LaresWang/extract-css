@@ -4,12 +4,15 @@ const path = require('path')
 const constants = require('fs').constants;
 
 const write = function(path, data, cb){
+  ensureDir(path.split('/').slice(0,-1).join('/'));
   fsp.writeFile(path, data).then(()=>cb()).catch(e=>console.log(e))
 }
 const writeJson = function(path, data, cb){
+  ensureDir(path.split('/').slice(0,-1).join('/'));
   fse.writeJSON(path, data, {spaces:2}).then(()=>cb()).catch(e=>console.log(e))
 }
 const append = function(path, data, cb){
+  ensureDir(path.split('/').slice(0,-1).join('/'));
   fsp.appendFile(path, data).then(()=>cb()).catch(e=>console.log(e));
 }
 
@@ -29,6 +32,14 @@ const getAbsolutePath = async function(filePath){
     }
   }
 
+}
+const dirMap = {};
+const ensureDir = (dir)=>{
+  if(dirMap[dir]){
+    return;
+  }
+  fse.ensureDirSync(dir)
+  dirMap[dir] = true;
 }
 
 module.exports = {
