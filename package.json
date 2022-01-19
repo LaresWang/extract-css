@@ -1,6 +1,6 @@
 {
   "name": "extract-common-css",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "extract the same css from different files and put into a common file",
   "main": "core/index.js",
   "scripts": {
@@ -29,7 +29,10 @@
     "vue-router": "^3.5.3"
   },
   "devDependencies": {
+    "@babel/core": "^7.16.7",
+    "@babel/preset-env": "^7.16.8",
     "@vue/cli-service": "^4.5.15",
+    "babel-loader": "^8.2.3",
     "less": "^3.13.1",
     "less-loader": "^5.0.0",
     "vue-template-compiler": "^2.6.14",
