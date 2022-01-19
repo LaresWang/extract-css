@@ -1,4 +1,5 @@
 const utils = require('./utils');
+const sort = require('./cssSort');
 const con = require('./const');
 
 const { DIVIDE_SELECTORS, SAME_LEVEL_REG, CHILD_LEVEL_REG } = con;
@@ -156,10 +157,14 @@ const genCommon = function(cssObj){
     const temp = selector.replace(DIVIDE_SELECTORS, ',\n');
     str += `${temp} {\n`;
     const css = cssObj[selector];
-    for(const key in css){
-      // str+=`\t${key}: ${css[key].replace(' !important','')} !important;\n`;
+    const sortedProps = sort(css);
+    sortedProps.forEach(key=>{
       str+=`\t${key}: ${css[key]};\n`;
-    }
+    })
+    // for(const key in css){
+    //   // str+=`\t${key}: ${css[key].replace(' !important','')} !important;\n`;
+    //   str+=`\t${key}: ${css[key]};\n`;
+    // }
     str += '}\n';
   }
   return str;
@@ -251,7 +256,9 @@ const genEach = function(lists){
 }
 
 const walk = function(obj, prop){
-  for(const key in obj){ // key 可能是样式属性或者选择器
+  /***********css属性排序 */
+  const sortedProps = sort(obj);
+  sortedProps.forEach(key=>{
     const value = obj[key];
     if(typeof value==='string'){
       style[prop] += `${spaceCount>0?space.repeat(spaceCount):''}${key}: ${value};\n`;
@@ -268,7 +275,27 @@ const walk = function(obj, prop){
       spaceCount--;
       style[prop] += `${spaceCount>0?space.repeat(spaceCount):''}}\n`;
     }
-  }
+  })
+  
+  /***********css属性不排序 */
+  // for(const key in obj){ // key 可能是样式属性或者选择器
+  //   const value = obj[key];
+  //   if(typeof value==='string'){
+  //     style[prop] += `${spaceCount>0?space.repeat(spaceCount):''}${key}: ${value};\n`;
+  //   } else if(typeof value==='object'){
+  //     const tspace = spaceCount>0?space.repeat(spaceCount):'';
+  //     let temp = key;
+  //     if(prop==='common'){
+  //       temp = temp.replace(SAME_LEVEL_REG, '$1').replace(CHILD_LEVEL_REG, ' > ')
+  //     }
+  //     temp = temp.replace(DIVIDE_SELECTORS,',\n'+tspace);
+  //     style[prop] += `${tspace}${temp} {\n`;
+  //     spaceCount++;
+  //     walk(value, prop);
+  //     spaceCount--;
+  //     style[prop] += `${spaceCount>0?space.repeat(spaceCount):''}}\n`;
+  //   }
+  // }
   
 }
 

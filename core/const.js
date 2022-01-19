@@ -14,6 +14,53 @@ const INHERIT_CSS_PROPS = [
   'text-align', 'line-height', 'letter-spacing', 'cursor',
 ];
 
+/**
+ * 属性书写顺序：建议遵循以下顺序。 位置>自身>文本>其他
+      a，布局定位属性(影响文档流)：display / position / float / left / top / right / bottom / clear / visibility / z-index / overflow
+      b，自身属性(盒模型)：width / height / margin / padding / border / background
+      c，文本属性(文本排版)：color / font / text-decoration / text-align / vertical-align / white- space / break-word
+      d，其他属性(装饰性,生成内容...)：content / cursor / border-radius / box-shadow / text-shadow / background:linear-gradient …
+ */
+// 这里只列出前三种属性，剩下的随意
+const SORTED_PROPERTY = [
+  'display',
+  'position',
+  'float',
+  'left',
+  'top',
+  'right',
+  'bottom',
+  'clear',
+  'visibility',
+  'z-index',
+  'overflow',
+  'width',
+  'min-width',
+  'max-width',
+  'height',
+  'min-height',
+  'max-height',
+  'margin',
+  'padding',
+  'border',
+  'flex',
+  'align-items',
+  'flex-direction',
+  'background',
+  'line-height',
+  'font-size',
+  'font',
+  'color',
+  'text-decoration',
+  'text-align',
+  'justify-content',
+  'vertical-align',
+  'white-space',
+  'break-word',
+  'letter-spacing'
+]
+
+
 const LEVEL_FLAG_REG = new RegExp(LEVEL_FLAG, 'g');
 // 下面这几个伪类不做处理 修改ui框架的样式也不处理
 const DO_NOT_CHECK_REG = /(\.el-)|(\/deep\/)|(:{1,2}[-a-zA-Z]*)/;
@@ -79,5 +126,5 @@ module.exports = {
   CHILD_LEVEL_REG,
   START_WITH_LETTER,
   DIVIDE_SELECTORS,
-  
+  SORTED_PROPERTY,
 }
