@@ -20,39 +20,38 @@
 export default {
 };
 </script>
-
 <style lang="less">
-/deep/ .abc {
-  height: 30px;
-}
-.t2{
-  color: #aaa;
-  font-size: 15px;
-  .test1{
-    font-size: 16px;
-    border: 1px solid #ddd;
-    color: #aaa;
-    .test2{
-      font-size: 16px;
-      color: #333
-    }
-  }
-}
+
+	/deep/ .abc {
+		height: 30px;
+	}
+	.t2 {
+		font-size: 15px;
+		color: #aaa;
+		.test1 {
+			border: 1px solid #ddd;
+			font-size: 16px;
+			.test2 {
+				color: #333;
+			}
+		}
+	}
 </style>
 <style scoped lang="less">
-  .t2{
-    /deep/ .def {
-      height: 40px;
+
+	.t2 {
+		/deep/ .def {
+			height: 40px;
 		}
-    .test3{
-      position: relative;
-      margin-top: 20px;
-      line-height: 40px;
-      .test4{
-        line-height: 30px;
-        font-size: 50px;
-        color: red;
-      }
-    }
-  }
+		.test3 {
+			position: relative;
+			margin-top: 20px;
+			line-height: 40px;
+			.test4 {
+				line-height: 30px;
+				font-size: 50px;
+				color: red;
+			}
+		}
+	}
 </style>

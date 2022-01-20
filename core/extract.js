@@ -998,7 +998,7 @@ const formatSelector = function(selector, dir){
 }
 
 const isUsefulSelector = function(selector, css){
-  if(START_WITH_LETTER.test(selector) || css[HAS_PATCHED]){
+  if(START_WITH_LETTER.test(selector) || css[HAS_PATCHED] || DO_NOT_CHECK_REG.test(selector)){
     return false;
   }
   return true
