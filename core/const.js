@@ -61,6 +61,8 @@ const SORTED_PROPERTY = [
   'background',
   'line-height',
   'font-size',
+  'font-weight',
+  'font-family',
   'font',
   'color',
   'text-decoration',
