@@ -22,6 +22,9 @@ export default {
 </script>
 
 <style lang="less">
+/deep/ .abc {
+  height: 30px;
+}
 .t2{
   color: #aaa;
   font-size: 15px;
@@ -38,6 +41,9 @@ export default {
 </style>
 <style scoped lang="less">
   .t2{
+    /deep/ .def {
+      height: 40px;
+		}
     .test3{
       position: relative;
       margin-top: 20px;

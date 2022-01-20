@@ -1120,10 +1120,13 @@ const extract = function(lists, oldInfos){
     oldInfos.filteredSameInheritCss = oldInfos.cssJson;
     flattenOldInfos = flatten([oldInfos]);
   }
-  
-  console.log('开始比对：', Date.now());
+  const startTime = process.hrtime.bigint();
+  console.info('开始比对：', startTime, '纳秒');
   patchV2(flatened, flattenOldInfos&&flattenOldInfos[0]);
-  console.log('比对完成：', Date.now());
+  const endTime = process.hrtime.bigint();
+  console.info('比对完成：', endTime, '纳秒');
+  const delta = endTime-startTime;
+  console.info(`对比耗时：${delta} 纳秒 ===> ${parseInt(delta)/1000000} 秒`)
   return {flatened, common: commonV2}
 }
 
