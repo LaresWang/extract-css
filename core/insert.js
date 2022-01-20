@@ -5,7 +5,7 @@ const path = require('path')
 //  destPath: 'src/assets/css/common.less', // 生成的css 文件路径
 //  insertPath: 'src/main.js', 
 
-const insert = function(css, options, type, fileLists){
+const insert = function(css, options, type, fileLists, sortFile){
   if(!css){
     return;
   }
@@ -42,11 +42,12 @@ const insert = function(css, options, type, fileLists){
   if(type==='each'){
     css.forEach((file,i)=>{
       const fp = file.path;
-      if(fileLists.includes(fp)){
-        gf.write(fp,(file.keepContent||'')+file.cssString, ()=>{
-          // console.log(fp, '成功')
-        })
-      }
+      // if(fileLists.includes(fp)){
+      //   gf.write(fp,(file.keepContent||'')+file.cssString, ()=>{
+      //     // console.log(fp, '成功')
+      //   })
+      // }
+      gf.write(fp,(file.keepContent||'')+file.cssString, ()=>{})
     })
   }
 

@@ -1108,13 +1108,18 @@ const invalidProp = function(prop, prev, next){
          typeof prev[prop] !== 'string';
 }
 
-const extract = function(lists, oldInfos){
+const extract = function(lists, oldInfos, sortAttr){
   // 去除空的样式表
   const availLists = filterEmpty(lists);
   // 把具有继承属性相同的值提到父级上
   const handledInheritLists = handleInheritProps(availLists, oldInfos?.cssJson);
 
   const flatened = flatten(handledInheritLists);
+  if(sortAttr){
+    // 给css属性排序，就不需要进行下面的比对流程了
+    return { flatened };
+  }
+
   let flattenOldInfos = null
   if(oldInfos){
     oldInfos.filteredSameInheritCss = oldInfos.cssJson;

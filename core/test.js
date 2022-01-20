@@ -30,7 +30,7 @@ const defaulConfig = {
 
 
 const Dep = new Dependencies(defaulConfig);
-function start(){
+function start(options = {}){
   Dep.run((data, styles)=>{
     // console.log(data, data.length);
     // console.log(JSON.stringify(data));
@@ -67,59 +67,84 @@ function start(){
     gf.write(path.join(process.cwd(), './temp/temp.txt'),JSON.stringify(styles), ()=>{
       console.log('111')
     })
-    const cssHandled = extract(styles, currentCommonInfos);
-    // console.log(cssHandled)
-    gf.writeJson(path.join(process.cwd(), './temp/temp_flatten.json'),cssHandled.flatened, ()=>{
-      console.log('222')
-    })
+    if(options.sortFile){
+      // 给单个文件排序
+      const filePath = gf.getAbsolutePath(options.sortFile);
+      const file = styles.filter(item=>item.path===filePath);
+      if(file.length){
+        sortAttrHandler(file);
+      } else {
+        throw new Error('cannot find the file ' + options.sortFile);
+      }
+    } else if (options.sortFiles){
+      // 给所有文件排序
+      sortAttrHandler(styles);
+    } else {
+      const cssHandled = extract(styles, currentCommonInfos);
+      // console.log(cssHandled)
+      gf.writeJson(path.join(process.cwd(), './temp/temp_flatten.json'),cssHandled.flatened, ()=>{
+        console.log('222')
+      })
 
-    // 公共的样式都已经抽离出来 下面需要把样式以特定格式放入项目文件里
-    // TODO 优化点 处理公共样式与处理每个文件的样式可同时进行，逻辑独立，没有依赖关系 
+      // 公共的样式都已经抽离出来 下面需要把样式以特定格式放入项目文件里
+      // TODO 优化点 处理公共样式与处理每个文件的样式可同时进行，逻辑独立，没有依赖关系 
 
-    /**======== 处理公共的样式 start==============**/
+      /**======== 处理公共的样式 start==============**/
 
-    gf.writeJson(path.join(process.cwd(), './temp/temp_common.json'),cssHandled.common, ()=>{
-      console.log('333')
-    })
+      gf.writeJson(path.join(process.cwd(), './temp/temp_common.json'),cssHandled.common, ()=>{
+        console.log('333')
+      })
 
-    const commonCss = obj2css(cssHandled.common);
-    gf.writeJson(path.join(process.cwd(), './temp/temp_common_css.json'),commonCss, ()=>{
-      console.log('444')
-    })
+      const commonCss = obj2css(cssHandled.common);
+      gf.writeJson(path.join(process.cwd(), './temp/temp_common_css.json'),commonCss, ()=>{
+        console.log('444')
+      })
 
-    const lessStr = genLess.genCommon(commonCss);
-    insert(lessStr, defaulConfig, 'common');
-    gf.write(path.join(process.cwd(), './temp/temp_common_css.less'),lessStr, ()=>{
-      console.log('555')
-    })
-    /**======== 处理公共的样式 end==============**/
-
-
-
-    /**======== 处理每个文件的样式 start==============**/
-    const {lists, logs} = unflatten(cssHandled.flatened);
-    const changedFileLists = Object.keys(logs);
-        /**======== 记录日志 start ===============**/
-          log(logs, changedFileLists, defaulConfig.logOutPut);
-        /**======== 记录日志 end =================**/
-    gf.writeJson(path.join(process.cwd(), './temp/temp_unflatten.json'),lists, ()=>{
-      console.log('666')
-    })
-
-    // 生成less样式字符串
-    const flists = genLess.genEach(lists);
-
-    insert(flists, null, 'each', changedFileLists);
-    gf.writeJson(path.join(process.cwd(), './temp/temp_lessfiles.json'),flists, ()=>{
-      console.log('777')
-    })
-    // console.log(flists)
+      const lessStr = genLess.genCommon(commonCss);
+      insert(lessStr, defaulConfig, 'common');
+      gf.write(path.join(process.cwd(), './temp/temp_common_css.less'),lessStr, ()=>{
+        console.log('555')
+      })
+      /**======== 处理公共的样式 end==============**/
 
 
 
+      /**======== 处理每个文件的样式 start==============**/
+      const {lists, logs} = unflatten(cssHandled.flatened);
+      const changedFileLists = Object.keys(logs);
+          /**======== 记录日志 start ===============**/
+            log(logs, changedFileLists, defaulConfig.logOutPut);
+          /**======== 记录日志 end =================**/
+      gf.writeJson(path.join(process.cwd(), './temp/temp_unflatten.json'),lists, ()=>{
+        console.log('666')
+      })
 
-    /**======== 处理每个文件的样式 end==============**/
+      // 生成less样式字符串
+      const flists = genLess.genEach(lists);
+
+      insert(flists, null, 'each', changedFileLists);
+      gf.writeJson(path.join(process.cwd(), './temp/temp_lessfiles.json'),flists, ()=>{
+        console.log('777')
+      })
+      // console.log(flists)
+
+
+
+
+      /**======== 处理每个文件的样式 end==============**/
+    }
   })
 }
 
-start();
+const sortAttrHandler = function(filelists){
+  const { flatened } = extract(filelists, null, true);
+  const {lists, logs} = unflatten(flatened);
+  const changedFileLists = Object.keys(logs);
+  log(logs, changedFileLists, defaulConfig.logOutPut);
+  const flists = genLess.genEach(lists);
+  insert(flists, null, 'each');
+}
+
+start({
+  sortFiles: true
+});
