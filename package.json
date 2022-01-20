@@ -1,6 +1,6 @@
 {
   "name": "extract-common-css",
-  "version": "1.0.8",
+  "version": "1.0.12",
   "description": "extract the same css from different files and put into a common file",
   "main": "core/index.js",
   "scripts": {
@@ -12,6 +12,8 @@
   "keywords": [
     "common css",
     "common style",
+    "extract css",
+    "extract style",
     "extract common css",
     "extract common style",
     "vue",
@@ -23,6 +25,7 @@
     "extract-css": "./bin/extract-css.js"
   },
   "dependencies": {
+    "@babel/runtime": "^7.16.7",
     "commander": "^8.3.0",
     "fs-extra": "^10.0.0",
     "vue": "^2.6.14",
@@ -30,6 +33,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.16.7",
+    "@babel/plugin-transform-runtime": "^7.16.8",
     "@babel/preset-env": "^7.16.8",
     "@vue/cli-service": "^4.5.15",
     "babel-loader": "^8.2.3",
