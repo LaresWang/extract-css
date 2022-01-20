@@ -1,6 +1,6 @@
 {
   "name": "extract-common-css",
-  "version": "1.1.0",
+  "version": "1.0.21",
   "description": "extract the same css from different files and put into a common file",
   "main": "core/index.js",
   "scripts": {
