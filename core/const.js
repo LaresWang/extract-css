@@ -34,6 +34,7 @@ const SORTED_PROPERTY = [
   'visibility',
   'z-index',
   'overflow',
+  'box-sizing',
   'width',
   'min-width',
   'max-width',

@@ -1,3 +1,4 @@
+const path = require('path')
 const Dependencies = require('./dependencies')
 const css2Object = require('./css2object')
 const extract = require('./extract')
@@ -77,7 +78,7 @@ function start(options = {}){
     // })
     if(options.sortFile){
       // 给单个文件排序
-      const filePath = gf.getAbsolutePath(options.sortFile);
+      const filePath = path.join(process.cwd(),options.sortFile);
       const file = styles.filter(item=>item.path===filePath);
       if(file.length){
         sortAttrHandler(file);

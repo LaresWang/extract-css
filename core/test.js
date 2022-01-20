@@ -32,7 +32,7 @@ const defaulConfig = {
 const Dep = new Dependencies(defaulConfig);
 function start(options = {}){
   Dep.run((data, styles)=>{
-    // console.log(data, data.length);
+    console.log(data, data.length);
     // console.log(JSON.stringify(data));
     // console.log(JSON.stringify(styles))
     let currentCommonInfos = null;
@@ -69,7 +69,7 @@ function start(options = {}){
     })
     if(options.sortFile){
       // 给单个文件排序
-      const filePath = gf.getAbsolutePath(options.sortFile);
+      const filePath = path.join(process.cwd(),options.sortFile);
       const file = styles.filter(item=>item.path===filePath);
       if(file.length){
         sortAttrHandler(file);
@@ -146,5 +146,5 @@ const sortAttrHandler = function(filelists){
 }
 
 start({
-  sortFiles: true
+  sortFile: 'src/view/test/t1.vue'
 });

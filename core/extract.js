@@ -1131,7 +1131,7 @@ const extract = function(lists, oldInfos, sortAttr){
   const endTime = process.hrtime.bigint();
   console.info('比对完成：', endTime, '纳秒');
   const delta = endTime-startTime;
-  console.info(`对比耗时：${delta} 纳秒 ===> ${parseInt(delta)/1000000} 秒`)
+  console.info(`对比耗时：${delta} 纳秒 ===> ${parseInt(delta)/1000000000} 秒`)
   return {flatened, common: commonV2}
 }
 
