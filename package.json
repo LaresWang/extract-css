@@ -1,7 +1,7 @@
 {
   "name": "extract-common-css",
   "version": "1.1.1",
-  "description": "extract the same css from different files and put into a common file",
+  "description": "Extract the same css to common place to reduce the duplicate codes, and reduce package size. \nSort css properties to reduce reflow and repaint, for improving the performance of page render",
   "main": "core/index.js",
   "scripts": {
     "start": "vue-cli-service serve",
@@ -16,6 +16,8 @@
     "extract style",
     "extract common css",
     "extract common style",
+    "sort css",
+    "sort css properties",
     "vue",
     "cli"
   ],
