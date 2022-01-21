@@ -14,7 +14,6 @@ npm install extract-common-css
 ```
 
 ## Usage
-----
 Add script in package.json, as follows:
 ```js
 // package.json
@@ -28,7 +27,6 @@ npm run css
 ```
 
 ## Configuration
------
 There are some configurations that you can customize if the default configuration doesn't meet your demands.
 
 Create new file named extract.css.json in the root directory of your project, 
@@ -46,19 +44,19 @@ Create new file named extract.css.json in the root directory of your project,
 }
 ```
 ### Description
- - entry -> **filePath|Array<filePath>**, the entry of collecting the style files.
- - destPath -> **filePath**, the destPath tell extract-common-css where to put the extracted style.
- - insertInfos -> **Object**, contain the infos where to import the **destPath** file.
-  - insertFile -> **filePath**, which file will import the **destPath** file.
-  - insertContent -> **String**, the **insertContent** will be put in the **insertFile**, default be appended to the bottom of **insertFile**.
-  - insertPosition -> **String**, as a position flag, can be used to custom place where **insertContent** inserted.
- - logOutPut -> **dirPath**, the directory of logs, when common css is extracted, will generate log file.
+ - entry -> [filePath|Array<filePath>], the entry of collecting the style files.
+ - destPath -> [filePath], the destPath tell extract-common-css where to put the extracted style.
+ - insertInfos -> [Object], contain the infos where to import the **destPath** file.
+  - insertFile -> [filePath], which file will import the **destPath** file.
+  - insertContent -> [String], the **insertContent** will be put in the **insertFile**, default be appended to the bottom of **insertFile**.
+  - insertPosition -> [String], as a position flag, can be used to custom place where **insertContent** inserted.
+ - logOutPut -> [dirPath], the directory of logs, when common css is extracted, will generate log file.
 
- - sortFile -> **filePath**, sort css properties for single file. you can excute script as follows to get same effect.
+ - sortFile -> [filePath], sort css properties for single file. you can excute script as follows to get same effect.
 ```bash
  extract-css s sort <filePath>
 ```
- - sortFiles -> **Boolean**, sort css properties for all style files. you can excute script as follows to get same effect. 
+ - sortFiles -> [Boolean], sort css properties for all style files. you can excute script as follows to get same effect. 
 ```bash
  extract-css s sort
 ```
