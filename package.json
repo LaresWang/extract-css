@@ -1,6 +1,6 @@
 {
   "name": "extract-common-css",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "Extract the same css to common place to reduce the duplicate codes, and reduce package size. \nSort css properties to reduce reflow and repaint, for improving the performance of page render",
   "main": "core/index.js",
   "scripts": {
