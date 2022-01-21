@@ -44,7 +44,7 @@ Create new file named extract.css.json in the root directory of your project,
 }
 ```
 ### Description
- - entry -> [filePath|Array<filePath>], the entry of collecting the style files.
+ - entry -> [filePath|Array```<filePath>```], the entry of collecting the style files.
  - destPath -> [filePath], the destPath tell extract-common-css where to put the extracted style.
  - insertInfos -> [Object], contain the infos where to import the **destPath** file.
   - insertFile -> [filePath], which file will import the **destPath** file.
